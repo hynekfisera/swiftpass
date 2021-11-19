@@ -12,11 +12,24 @@ export default function Generate() {
     start: "left",
   });
 
+  const [password, setPassword] = useState("Password will appear here");
+
   const changeForm = (e) => {
     setForm({
       ...form,
       [e.target.name]: e.target.type === "checkbox" ? e.target.checked : e.target.value,
     });
+  };
+
+  const sendForm = () => {
+    let params = "";
+    Object.keys(form).map(function (key) {
+      params += `${key}=${form[key]}&`;
+    });
+    console.log(params);
+    fetch(`/api/new?${params}`)
+      .then((response) => response.json())
+      .then((data) => setPassword(data.password));
   };
 
   return (
@@ -29,7 +42,7 @@ export default function Generate() {
       <main>
         <div className="container">
           <h1>Generate a password</h1>
-          <form>
+          <div className="form">
             <div className="range-group">
               <label htmlFor="length">Password length: {form.length}</label>
               <input type="range" name="length" id="length" min="8" max="128" step="8" value={form.length} onChange={(e) => changeForm(e)} />
@@ -57,8 +70,14 @@ export default function Generate() {
                 <option value="right">right side</option>
               </select>
             </div>
-            <button disabled={form.lowercase || form.uppercase || form.numbers || form.symbols ? "" : "disabled"}>Generate</button>
-          </form>
+            <button disabled={form.lowercase || form.uppercase || form.numbers || form.symbols ? "" : "disabled"} onClick={sendForm}>
+              Generate
+            </button>
+          </div>
+          <div className="password">
+            <span>{password}</span>
+            <button onClick={() => navigator.clipboard.writeText(password)}>Copy to clipboard</button>
+          </div>
         </div>
       </main>
     </>
