@@ -58,7 +58,7 @@ export default function Remember() {
         <meta name="description" content="Smart password generator" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main>
+      <main className="remember">
         <div className="container">
           <h1>Remember a password</h1>
           <span>{info}</span>

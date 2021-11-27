@@ -5,13 +5,10 @@ export default function Header() {
   return (
     <header>
       <div className="container">
-        <span>Swiftpass</span>
+        <Link href="/">
+          <a>Swiftpass</a>
+        </Link>
         <ul>
-          <li>
-            <Link href="/">
-              <a>Home</a>
-            </Link>
-          </li>
           <li>
             <Link href="/remember">
               <a>Remember</a>
