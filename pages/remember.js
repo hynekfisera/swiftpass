@@ -23,7 +23,21 @@ export default function Remember() {
 
   const onPrev = () => {
     setInput("");
-    setStep(step - 1);
+    if (step % 2 !== 0) {
+    } else {
+      if (step > 2) {
+        setStep(step - 2);
+      } else {
+        setStep(step - 1);
+      }
+    }
+  };
+
+  const onReset = () => {
+    setStep(0);
+    setPassword("0");
+    setInput("");
+    setInfo("Enter a password");
   };
 
   useEffect(() => {
@@ -61,16 +75,32 @@ export default function Remember() {
       <main className="remember">
         <div className="container">
           <h1>Remember a password</h1>
-          <span>{info}</span>
-          <input
-            type="text"
-            value={input}
-            onChange={(e) => {
-              setInput(e.target.value);
-            }}
-            disabled={step % 2 === 0 ? "" : "disabled"}
-          />
-          {Math.floor(step / 2) !== password.length && (step % 2 === 0 ? <button onClick={onEnter}>Enter</button> : <button onClick={onNext}>Next</button>)}
+          <h2>{info}</h2>
+          <div>
+            <input
+              type="text"
+              value={input}
+              onChange={(e) => {
+                setInput(e.target.value);
+              }}
+              disabled={step % 2 === 0 ? "" : "disabled"}
+            />
+            {Math.floor((step - 1) / 2) !== password.length ? (
+              step % 2 === 0 ? (
+                <button onClick={onEnter} className="btn btn-l btn-secondary">
+                  Enter
+                </button>
+              ) : (
+                <button onClick={onNext} className="btn btn-l btn-primary">
+                  Next
+                </button>
+              )
+            ) : (
+              <button onClick={onReset} className="btn btn-l btn-primary">
+                Reset
+              </button>
+            )}
+          </div>
           {step > 1 && <span onClick={onPrev}>Go back</span>}
         </div>
       </main>

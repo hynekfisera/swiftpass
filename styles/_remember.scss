@@ -1,0 +1,52 @@
+main.remember {
+  > div.container {
+    display: flex;
+    flex-direction: column;
+
+    h2 {
+      font-size: 2rem;
+      font-weight: 400;
+      color: $text-primary;
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    div {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+
+      input {
+        margin-right: 1rem;
+        padding: 0.5rem 1rem;
+        width: 100%;
+        background: none;
+        border: none;
+        border-bottom: 3px solid $primary;
+        outline: none;
+        font-size: 2rem;
+        font-weight: 600;
+        color: $text-secondary;
+
+        &:focus {
+          background-color: fade-out($primary, 0.95);
+        }
+
+        &:disabled {
+          opacity: 0.5;
+        }
+      }
+    }
+
+    span {
+      text-decoration: underline;
+      text-align: center;
+      color: $text-primary;
+      opacity: 0.5;
+      font-size: 1.25rem;
+      margin: auto;
+      margin-top: 1.5rem;
+    }
+  }
+}
