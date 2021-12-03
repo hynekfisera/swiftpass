@@ -15,6 +15,10 @@ header {
 
     ul {
       list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      flex-wrap: wrap;
 
       li {
         display: inline-block;
@@ -22,6 +26,7 @@ header {
         font-size: 18px;
         font-weight: 400;
         transition: all 0.2s ease;
+        text-align: right;
 
         &:hover {
           text-decoration: underline;

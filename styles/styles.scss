@@ -1,4 +1,4 @@
-$primary: #5218fa;
+$primary: #6c3bfb;
 $background: #0a0011;
 $text-primary: #f5f5f7;
 $text-secondary: #e7e7ef;
@@ -28,6 +28,43 @@ main {
     font-weight: 700;
     text-align: center;
     margin-bottom: 3rem;
+  }
+}
+
+.btn {
+  font-weight: 500;
+  border-radius: 0.5rem;
+  border: none;
+  outline: none;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.btn-s {
+  padding: 10px 20px;
+  font-size: 16px;
+}
+
+.btn-l {
+  padding: 12px 24px;
+  font-size: 18px;
+}
+
+.btn-primary {
+  background: $primary;
+  color: $text-primary;
+
+  &:hover {
+    background: darken($primary, 10);
+  }
+}
+
+.btn-secondary {
+  background: #333;
+  color: $text-primary;
+
+  &:hover {
+    background: darken(#333, 5);
   }
 }
 

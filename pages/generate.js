@@ -112,13 +112,15 @@ export default function Generate() {
                 <span className="checkmark"></span>
               </label>
             </div>
-            <button disabled={form.lowercase || form.uppercase || form.numbers || form.symbols ? "" : "disabled"} onClick={sendForm}>
+            <button disabled={form.lowercase || form.uppercase || form.numbers || form.symbols ? "" : "disabled"} onClick={sendForm} className="btn btn-l btn-primary">
               Generate
             </button>
           </div>
           <div className="password">
             <span>{password}</span>
-            <button onClick={() => navigator.clipboard.writeText(password)}>Copy to clipboard</button>
+            <button onClick={() => navigator.clipboard.writeText(password)} className="btn btn-s btn-secondary">
+              Copy to clipboard
+            </button>
           </div>
         </div>
       </main>

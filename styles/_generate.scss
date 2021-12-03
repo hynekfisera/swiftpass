@@ -47,7 +47,7 @@ main.generate {
         width: 20px;
         height: 20px;
         border-radius: 50%;
-        background: lighten($primary, 15);
+        background: $primary;
         cursor: pointer;
       }
 
@@ -55,7 +55,7 @@ main.generate {
         width: 20px;
         height: 20px;
         border-radius: 50%;
-        background: lighten($primary, 15);
+        background: $primary;
         cursor: pointer;
       }
     }
@@ -91,16 +91,17 @@ main.generate {
         right: 0;
         height: 25px;
         width: 25px;
-        background-color: #eee;
+        background-color: #a4a1ac;
         border-radius: 6px;
+        transition: all 0.2s ease;
       }
 
       .checkbox-container:hover input ~ .checkmark {
-        background-color: #ddd;
+        background-color: #bbb;
       }
 
       .checkbox-container input:checked ~ .checkmark {
-        background: lighten($primary, 7);
+        background: $primary;
       }
 
       .checkmark:after {
@@ -140,16 +141,28 @@ main.generate {
         }
       }
     }
+
+    button {
+      display: block;
+      margin-left: auto;
+    }
   }
 
   .password {
+    margin-top: 2rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap;
+    border: 1px solid fade-out($primary, 0.7);
+    border-radius: 8px;
+    padding: 1rem 1.5rem;
 
     span {
       color: $text-primary;
-      font-size: 20px;
+      font-size: 22px;
+      font-weight: 600;
+      word-break: break-all;
     }
   }
 }

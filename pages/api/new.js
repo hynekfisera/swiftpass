@@ -1,12 +1,12 @@
 export default function handler(req, res) {
   const length = req.query.length ?? 16;
-  const lowercase = req.query.lowercase ?? true;
-  const uppercase = req.query.uppercase ?? true;
-  const numbers = req.query.numbers ?? true;
-  const symbols = req.query.symbols ?? true;
+  const lowercase = (req.query.lowercase ?? "true") === "true";
+  const uppercase = (req.query.uppercase ?? "true") === "true";
+  const numbers = (req.query.numbers ?? "true") === "true";
+  const symbols = (req.query.symbols ?? "true") === "true";
   const start = req.query.start ?? "left";
-  const excludesimilar = req.query.excludesimilar ?? true;
-  const excluderare = req.query.excluderare ?? true;
+  const excludesimilar = (req.query.excludesimilar ?? "true") === "true";
+  const excluderare = (req.query.excluderare ?? "true") === "true";
   const multiply = req.query.multiply ?? 2;
   const multiplynumberssymbols = req.query.multiplynumbers ?? 3;
 
@@ -14,13 +14,13 @@ export default function handler(req, res) {
   const leftUppercase = "QWERT".repeat(multiply) + "ASDFG".repeat(multiply) + "YXCVB";
   const leftNumbers = "12345".repeat(multiplynumberssymbols);
   const leftSymbols = "#@".repeat(multiplynumberssymbols) + (!excluderare ? "[]" : "");
-  const left = (lowercase == "true" ? leftLowercase : "") + (Boolean(uppercase) && leftUppercase) + (numbers == "true" ? leftNumbers : "") + (symbols == "true" ? leftSymbols : "");
+  const left = (lowercase ? leftLowercase : "") + (uppercase && leftUppercase) + (numbers ? leftNumbers : "") + (symbols ? leftSymbols : "");
 
   const rightLowercase = "zuiop".repeat(multiply) + ("hjk" + (!excludesimilar ? "l" : "")).repeat(multiply) + "nm";
   const rightUppercase = ("ZUP" + (!excludesimilar ? "IO" : "")).repeat(multiply) + "HJKL".repeat(multiply) + "NM";
   const rightNumbers = ("789" + (!excludesimilar ? "0" : "")).repeat(multiplynumberssymbols);
-  const rightSymbols = "!?.,".repeat(multiplynumberssymbols) + (!excluderare ? "(){}<>:" : "");
-  const right = (lowercase == "true" ? rightLowercase : "") + (Boolean(uppercase) && rightUppercase) + (numbers == "true" ? rightNumbers : "") + (symbols == "true" ? rightSymbols : "");
+  const rightSymbols = "!?".repeat(multiplynumberssymbols) + (!excluderare ? ".,(){}<>:" : "");
+  const right = (lowercase ? rightLowercase : "") + (uppercase && rightUppercase) + (numbers ? rightNumbers : "") + (symbols ? rightSymbols : "");
 
   let password = "";
   for (let i = 1; i <= length; i++) {
