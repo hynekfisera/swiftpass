@@ -21,16 +21,17 @@ main.remember {
         margin-right: 1rem;
         padding: 0.5rem 1rem;
         width: 100%;
-        background: none;
         border: none;
-        border-bottom: 3px solid $primary;
+        border-bottom: 3px solid fade-out($primary, 0.2);
         outline: none;
         font-size: 2rem;
         font-weight: 600;
         color: $text-secondary;
+        background-color: fade-out($primary, 0.97);
 
         &:focus {
-          background-color: fade-out($primary, 0.95);
+          background-color: fade-out($primary, 0.93);
+          border-bottom: 3px solid $primary;
         }
 
         &:disabled {
@@ -47,6 +48,7 @@ main.remember {
       font-size: 1.25rem;
       margin: auto;
       margin-top: 1.5rem;
+      cursor: pointer;
     }
   }
 }
