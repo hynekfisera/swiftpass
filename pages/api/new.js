@@ -14,13 +14,13 @@ export default function handler(req, res) {
   const leftUppercase = "QWERT".repeat(multiply) + "ASDFG".repeat(multiply) + "YXCVB";
   const leftNumbers = "12345".repeat(multiplynumberssymbols);
   const leftSymbols = "#@".repeat(multiplynumberssymbols) + (!excluderare ? "[]" : "");
-  const left = (lowercase ? leftLowercase : "") + (uppercase && leftUppercase) + (numbers ? leftNumbers : "") + (symbols ? leftSymbols : "");
+  const left = (lowercase ? leftLowercase : "") + (uppercase ? leftUppercase : "") + (numbers ? leftNumbers : "") + (symbols ? leftSymbols : "");
 
   const rightLowercase = "zuiop".repeat(multiply) + ("hjk" + (!excludesimilar ? "l" : "")).repeat(multiply) + "nm";
   const rightUppercase = ("ZUP" + (!excludesimilar ? "IO" : "")).repeat(multiply) + "HJKL".repeat(multiply) + "NM";
   const rightNumbers = ("789" + (!excludesimilar ? "0" : "")).repeat(multiplynumberssymbols);
   const rightSymbols = "!?".repeat(multiplynumberssymbols) + (!excluderare ? ".,(){}<>:" : "");
-  const right = (lowercase ? rightLowercase : "") + (uppercase && rightUppercase) + (numbers ? rightNumbers : "") + (symbols ? rightSymbols : "");
+  const right = (lowercase ? rightLowercase : "") + (uppercase ? rightUppercase : "") + (numbers ? rightNumbers : "") + (symbols ? rightSymbols : "");
 
   let password = "";
   for (let i = 1; i <= length; i++) {
@@ -30,6 +30,8 @@ export default function handler(req, res) {
       password += right.charAt(Math.floor(Math.random() * right.length));
     }
   }
+
+  console.log(left, right);
 
   res.status(200).json({ password: password });
 }
