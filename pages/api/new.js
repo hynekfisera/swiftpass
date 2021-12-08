@@ -31,7 +31,5 @@ export default function handler(req, res) {
     }
   }
 
-  console.log(left, right);
-
   res.status(200).json({ password: password });
 }

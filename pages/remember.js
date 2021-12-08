@@ -37,18 +37,13 @@ export default function Remember() {
   };
 
   const onPrev = () => {
-    if (step % 2 !== 0) {
-      if (password.slice(0, Math.floor(step / 2)) !== input) {
-        setStep(step - 2);
-        setInfo(`The ${suffix(Math.floor(step / 2) + 1)} character is ${password[Math.floor(step / 2)]}`);
-      } else {
-        setStep(step - 1);
-      }
-      setInput("");
+    if (password.slice(0, Math.floor(step / 2)) !== input) {
+      setStep(step - 2);
+      setInfo(`The ${suffix(Math.floor(step / 2))} character is ${password[Math.floor(step / 2) - 1]}`);
     } else {
-      setInput("");
       setStep(step - 1);
     }
+    setInput("");
   };
 
   const onTryAgain = () => {
@@ -69,7 +64,7 @@ export default function Remember() {
     } else {
       const character = Math.floor(step / 2);
       if (step % 2 !== 0) {
-        if (character === password.length) {
+        if (character === password.length && password.slice(0, character) === input) {
           setInfo("Correct! Now you remember the password!");
         } else {
           if (step === 1) {
@@ -78,7 +73,9 @@ export default function Remember() {
             if (password.slice(0, character) === input) {
               setInfo(`Correct! The ${suffix(character + 1)} character is ${password[character]}`);
             } else {
-              setInfo("Wrong! Try again or go back");
+              if (info.slice(0, 3) !== "The") {
+                setInfo("Wrong! Try again or go back");
+              }
             }
           }
         }
@@ -86,7 +83,7 @@ export default function Remember() {
         setInfo(`Type the first ${character} character(s)`);
       }
     }
-  }, [step, password, input]);
+  }, [step, password, input, info]);
 
   return (
     <>
@@ -108,7 +105,7 @@ export default function Remember() {
               }}
               disabled={step % 2 === 0 ? "" : "disabled"}
             />
-            {Math.floor((step - 1) / 2) !== password.length ? (
+            {Math.floor((step - 1) / 2) !== password.length || password.slice(0, Math.floor((step - 1) / 2)) !== input ? (
               step % 2 === 0 ? (
                 <button onClick={onEnter} className="btn btn-l btn-secondary">
                   Enter
@@ -128,7 +125,7 @@ export default function Remember() {
               </button>
             )}
           </div>
-          {step > 0 && (step > 1 ? <span onClick={onPrev}>Go back</span> : <span onClick={onReset}>Go back</span>)}
+          {step % 2 !== 0 && (step > 1 ? <span onClick={onPrev}>Go back</span> : <span onClick={onReset}>Go back</span>)}
         </div>
       </main>
     </>

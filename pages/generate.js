@@ -34,6 +34,12 @@ export default function Generate() {
       .then((data) => setPassword(data.password));
   };
 
+  const onCopy = (e) => {
+    navigator.clipboard.writeText(password);
+    e.target.innerText = "Copied!";
+    setTimeout(() => (e.target.innerText = "Copy to clipboard"), 1000);
+  };
+
   return (
     <>
       <Head>
@@ -118,7 +124,7 @@ export default function Generate() {
           </div>
           <div className="password">
             <span>{password}</span>
-            <button onClick={() => navigator.clipboard.writeText(password)} className="btn btn-s btn-secondary">
+            <button onClick={(e) => onCopy(e)} className="btn btn-s btn-secondary">
               Copy to clipboard
             </button>
           </div>
