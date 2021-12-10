@@ -54,8 +54,13 @@ main {
   background: $primary;
   color: $text-primary;
 
-  &:hover {
+  &:not(:disabled):hover {
     background: darken($primary, 10);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
   }
 }
 
