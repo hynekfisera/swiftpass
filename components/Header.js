@@ -10,13 +10,13 @@ export default function Header() {
         </Link>
         <ul>
           <li>
-            <Link href="/remember">
-              <a>Remember</a>
+            <Link href="/generate">
+              <a>Generate</a>
             </Link>
           </li>
           <li>
-            <Link href="/generate">
-              <a>Generate</a>
+            <Link href="/remember">
+              <a>Remember</a>
             </Link>
           </li>
         </ul>

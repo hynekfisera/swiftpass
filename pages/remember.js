@@ -39,11 +39,11 @@ export default function Remember() {
   const onPrev = () => {
     if (password.slice(0, Math.floor(step / 2)) !== input) {
       setStep(step - 2);
-      setInfo(`The ${suffix(Math.floor(step / 2))} character is ${password[Math.floor(step / 2) - 1]}`);
+      setInput(password.slice(0, Math.floor(step / 2) - 1));
     } else {
       setStep(step - 1);
+      setInput("");
     }
-    setInput("");
   };
 
   const onTryAgain = () => {
@@ -73,9 +73,7 @@ export default function Remember() {
             if (password.slice(0, character) === input) {
               setInfo(`Correct! The ${suffix(character + 1)} character is ${password[character]}`);
             } else {
-              if (info.slice(0, 3) !== "The") {
-                setInfo("Wrong! Try again or go back");
-              }
+              setInfo("Wrong! Try again or go back");
             }
           }
         }
