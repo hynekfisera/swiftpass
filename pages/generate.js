@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
 import Head from "next/head";
-import { useState } from "react";
 
 export default function Generate() {
   const [form, setForm] = useState({
@@ -20,6 +19,13 @@ export default function Generate() {
     setForm({
       ...form,
       [e.target.name]: e.target.type === "checkbox" ? e.target.checked : e.target.value,
+    });
+  };
+
+  const changeInput = (e) => {
+    setForm({
+      ...form,
+      length: e.target.value,
     });
   };
 
@@ -52,8 +58,8 @@ export default function Generate() {
           <h1>Generate a password</h1>
           <div className="form">
             <div className="range-group">
-              <label htmlFor="length">
-                Password length: <strong>{form.length}</strong>
+              <label htmlFor="length" className="label">
+                Password length: <input type="number" value={form.length} onChange={changeInput} />
               </label>
               <input type="range" name="length" id="length" min="8" max="128" step="8" value={form.length} onChange={(e) => changeForm(e)} />
             </div>

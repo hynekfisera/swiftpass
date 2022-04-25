@@ -60,6 +60,22 @@ main.generate {
         background: $primary;
         cursor: pointer;
       }
+
+      .label {
+        display: flex;
+        flex-wrap: wrap;
+
+        input {
+          height: 100%;
+          padding: 0.25rem 0.5rem;
+          border-radius: 6px;
+          margin-left: 0.25rem;
+
+          &:focus {
+            outline-color: $primary;
+          }
+        }
+      }
     }
 
     .checkbox-group {
