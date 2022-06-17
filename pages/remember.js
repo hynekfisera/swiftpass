@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Head from "next/head";
+import { NextSeo } from "next-seo";
 
 export default function Remember() {
   const [step, setStep] = useState(0);
@@ -85,11 +85,7 @@ export default function Remember() {
 
   return (
     <>
-      <Head>
-        <title>Remember | Swiftpass</title>
-        <meta name="description" content="Smart password generator" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+      <NextSeo title="Remember" />
       <main className="remember">
         <div className="container">
           <h1>Remember a password</h1>

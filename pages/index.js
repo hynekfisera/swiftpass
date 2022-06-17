@@ -1,14 +1,10 @@
-import Head from "next/head";
 import Link from "next/link";
+import { NextSeo } from "next-seo";
 
 export default function Home() {
   return (
     <>
-      <Head>
-        <title>Swiftpass</title>
-        <meta name="description" content="Smart password generator" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+      <NextSeo title="Home" />
       <main className="index">
         <div className="container">
           <h1>Smart password generator</h1>

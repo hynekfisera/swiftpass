@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Head from "next/head";
+import { NextSeo } from "next-seo";
 
 export default function Generate() {
   const [form, setForm] = useState({
@@ -48,11 +48,7 @@ export default function Generate() {
 
   return (
     <>
-      <Head>
-        <title>Generate | Swiftpass</title>
-        <meta name="description" content="Smart password generator" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+      <NextSeo title="Generate" />
       <main className="generate">
         <div className="container">
           <h1>Generate a password</h1>
