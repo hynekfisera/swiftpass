@@ -1,6 +1,6 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  siteUrl: "https://swiftpass.hynekfisera.com",
+  siteUrl: "https://swiftpass.fisera.co",
   generateRobotsTxt: true,
   generateIndexSitemap: false,
 };
