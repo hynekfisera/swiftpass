@@ -5,7 +5,7 @@ const seo = {
   openGraph: {
     type: "website",
     locale: "en",
-    url: "https://swiftpass.fisera.co/",
+    url: "https://swiftpass.hynekfisera.com/",
     site_name: "Swiftpass",
     title: "Swiftpass",
     description: "Smart password generator which can generate not only strong, but also quick-to-enter passwords.",
