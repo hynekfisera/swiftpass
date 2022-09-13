@@ -85,7 +85,7 @@ export default function Remember() {
 
   return (
     <>
-      <NextSeo title="Remember" />
+      <NextSeo title="Remember" canonical="https://swiftpass.hynekfisera.com/remember" />
       <main className="remember">
         <div className="container">
           <h1>Remember a password</h1>

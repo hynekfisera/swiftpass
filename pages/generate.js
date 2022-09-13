@@ -48,7 +48,7 @@ export default function Generate() {
 
   return (
     <>
-      <NextSeo title="Generate" />
+      <NextSeo title="Generate" canonical="https://swiftpass.hynekfisera.com/generate" />
       <main className="generate">
         <div className="container">
           <h1>Generate a password</h1>
